@@ -21,6 +21,7 @@ class _GridViewScreenState extends State<GridViewScreen> {
       Get.find<InputDetailsController>();
 
   List<String> _charList = [];
+  List<String> _inputString = [];
 
   @override
   void initState() {
@@ -49,12 +50,11 @@ class _GridViewScreenState extends State<GridViewScreen> {
             Padding(
               padding: EdgeInsets.all(4.w),
               child: CustomFormField(
-                maxLength: 3,
                 label: 'Word',
                 hintText: 'Enter word to find',
                 textInputAction: TextInputAction.next,
                 onChanged: (String value) {
-                  _charList.add(value.toUpperCase());
+                  _updateInputCharList(value.toUpperCase());
                   setState(() {});
                 },
                 inputFormatter: [
@@ -87,11 +87,18 @@ class _GridViewScreenState extends State<GridViewScreen> {
     );
   }
 
+  void _updateInputCharList(String value) {
+    final result = value.split('');
+    // debugPrint(result.toString());
+    _inputString = result;
+    setState(() {});
+  }
+
   Widget _gridItem(String char) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: _charList.contains(char.toUpperCase())
+        color: _inputString.contains(char.toUpperCase())
             ? Constant.primaryColor.withOpacity(0.6)
             : Constant.primaryColor.withOpacity(0.1),
         boxShadow: StyleUtil.primaryShadowLight(),
@@ -101,7 +108,7 @@ class _GridViewScreenState extends State<GridViewScreen> {
         child: Text(
           char.toUpperCase(),
           style: TextStyle(
-            color: _charList.contains(char.toUpperCase())
+            color: _inputString.contains(char.toUpperCase())
                 ? Constant.textWhite
                 : Constant.textColor,
           ),
