@@ -95,9 +95,9 @@ class StyleUtil {
     );
   }
 
-  static primaryTextFieldDecoration({String hintText, Widget prefix}) {
+  static primaryTextFieldDecoration({String? hintText, Widget? prefix}) {
     return InputDecoration(
-      prefixIcon: prefix ?? null,
+      prefixIcon: prefix,
       counterText: '',
       contentPadding:
           const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12),

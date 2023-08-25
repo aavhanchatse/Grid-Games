@@ -7,23 +7,23 @@ import 'package:gridapp/utils/style_utils.dart';
 class CustomFormField extends StatelessWidget {
   final String label;
   final String hintText;
-  final int maxLines;
-  final int maxLength;
-  final TextInputAction textInputAction;
+  final int? maxLines;
+  final int? maxLength;
+  final TextInputAction? textInputAction;
   final Function onChanged;
-  final Function validator;
-  final TextInputType keyboardType;
-  final String initialValue;
-  final List<TextInputFormatter> inputFormatter;
+  final Function? validator;
+  final TextInputType? keyboardType;
+  final String? initialValue;
+  final List<TextInputFormatter>? inputFormatter;
   final bool showCounter;
 
   const CustomFormField({
-    Key key,
-    @required this.label,
-    @required this.hintText,
+    Key? key,
+    required this.label,
+    required this.hintText,
     this.maxLines,
     this.textInputAction,
-    @required this.onChanged,
+    required this.onChanged,
     this.validator,
     this.keyboardType,
     this.initialValue,
@@ -74,8 +74,14 @@ class CustomFormField extends StatelessWidget {
             errorBorder: StyleUtil.formTextFieldInputBorder(),
             disabledBorder: StyleUtil.formTextFieldInputBorder(),
           ),
-          onChanged: onChanged,
-          validator: validator,
+          onChanged: (String value) {
+            onChanged(value);
+          },
+          validator: validator == null
+              ? null
+              : (value) {
+                  return validator!(value);
+                },
         ),
       ],
     );

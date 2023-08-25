@@ -7,14 +7,14 @@ import 'package:gridapp/view/screens/splash_screen.dart';
 
 void main() {
   if (kReleaseMode) {
-    debugPrint = (String message, {int wrapWidth}) {};
+    debugPrint = (String? message, {int? wrapWidth}) {};
   }
 
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

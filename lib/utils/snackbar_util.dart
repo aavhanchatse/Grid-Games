@@ -5,7 +5,7 @@ import 'package:gridapp/utils/size_config.dart';
 import 'package:gridapp/utils/style_utils.dart';
 
 class SnackBarUtil {
-  static showSnackBar(String text, {Widget actionButton, Color color}) {
+  static showSnackBar(String text, {Widget? actionButton, Color? color}) {
     Get.showSnackbar(GetSnackBar(
       duration: const Duration(milliseconds: 2000),
       borderRadius: 16.0,

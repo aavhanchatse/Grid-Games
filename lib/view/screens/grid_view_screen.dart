@@ -10,7 +10,7 @@ import 'package:gridapp/view/widgets/custom_form_field.dart';
 import 'package:gridapp/view/widgets/primary_button.dart';
 
 class GridViewScreen extends StatefulWidget {
-  const GridViewScreen({Key key}) : super(key: key);
+  const GridViewScreen({Key? key}) : super(key: key);
 
   @override
   State<GridViewScreen> createState() => _GridViewScreenState();

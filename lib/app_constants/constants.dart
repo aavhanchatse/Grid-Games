@@ -7,5 +7,5 @@ class Constant {
   static Color textWhite = HexColor('ffffff');
   static Color black = HexColor('000000');
   static Color white = HexColor('ffffff');
-  static Color grey400 = Colors.grey[400];
+  static Color grey400 = Colors.grey[400]!;
 }

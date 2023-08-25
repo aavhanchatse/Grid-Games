@@ -7,12 +7,15 @@ class PrimaryButton extends StatelessWidget {
   final String title;
   final Function onPress;
 
-  const PrimaryButton({Key key, this.title, this.onPress}) : super(key: key);
+  const PrimaryButton({Key? key, required this.title, required this.onPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPress,
+      onTap: () {
+        onPress();
+      },
       child: Container(
         height: 50,
         // height: 6.5.h,

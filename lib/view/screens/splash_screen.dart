@@ -5,7 +5,7 @@ import 'package:gridapp/utils/size_config.dart';
 import 'package:gridapp/view/screens/input_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();

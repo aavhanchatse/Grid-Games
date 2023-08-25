@@ -11,7 +11,7 @@ import 'package:gridapp/view/widgets/custom_form_field.dart';
 import 'package:gridapp/view/widgets/primary_button.dart';
 
 class InputScreen extends StatefulWidget {
-  const InputScreen({Key key}) : super(key: key);
+  const InputScreen({Key? key}) : super(key: key);
 
   @override
   State<InputScreen> createState() => _InputScreenState();
@@ -23,7 +23,7 @@ class _InputScreenState extends State<InputScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  DateTime _currentBackPressTime;
+  DateTime? _currentBackPressTime;
 
   @override
   Widget build(BuildContext context) {
@@ -127,11 +127,11 @@ class _InputScreenState extends State<InputScreen> {
                                     ? '1'
                                     : inputDetailsController
                                         .numberOfColumns.value) *
-                                int.parse(inputDetailsController
-                                        .numberOfRows.value.isEmpty
-                                    ? '1'
-                                    : inputDetailsController
-                                        .numberOfRows.value)) {
+                                int.parse(
+                                    inputDetailsController.numberOfRows.value.isEmpty
+                                        ? '1'
+                                        : inputDetailsController
+                                            .numberOfRows.value)) {
                           return 'Enter ${int.parse(inputDetailsController.numberOfColumns.value.isEmpty ? '1' : inputDetailsController.numberOfColumns.value) * int.parse(inputDetailsController.numberOfRows.value.isEmpty ? '1' : inputDetailsController.numberOfRows.value)} letters';
                         } else if (value.trim().length >
                             int.parse(inputDetailsController
@@ -142,8 +142,7 @@ class _InputScreenState extends State<InputScreen> {
                                 int.parse(inputDetailsController
                                         .numberOfRows.value.isEmpty
                                     ? '1'
-                                    : inputDetailsController
-                                        .numberOfRows.value)) {
+                                    : inputDetailsController.numberOfRows.value)) {
                           return 'Enter only ${int.parse(inputDetailsController.numberOfColumns.value.isEmpty ? '1' : inputDetailsController.numberOfColumns.value) * int.parse(inputDetailsController.numberOfRows.value.isEmpty ? '1' : inputDetailsController.numberOfRows.value)} letters';
                         }
                         return null;
@@ -170,9 +169,9 @@ class _InputScreenState extends State<InputScreen> {
   }
 
   void _validateDetails() {
-    FocusManager.instance.primaryFocus.unfocus();
+    FocusManager.instance.primaryFocus!.unfocus();
 
-    if (!_formKey.currentState.validate()) {
+    if (!_formKey.currentState!.validate()) {
       return;
     }
 
@@ -185,8 +184,7 @@ class _InputScreenState extends State<InputScreen> {
 
   Future<bool> _onWillPop() {
     DateTime now = DateTime.now();
-    if (_currentBackPressTime == null ||
-        now.difference(_currentBackPressTime) > const Duration(seconds: 2)) {
+    if (now.difference(_currentBackPressTime!) > const Duration(seconds: 2)) {
       _currentBackPressTime = now;
 
       SnackBarUtil.showSnackBar('Press back again to exit');
